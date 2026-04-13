@@ -1,3 +1,46 @@
+// ── Typing animation ──
+const typedEl = document.querySelector('.typed-text');
+const phrases = ['Backend Developer', 'Intern Developer'];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function type() {
+  const current = phrases[phraseIndex];
+  if (isDeleting) {
+    charIndex--;
+  } else {
+    charIndex++;
+  }
+
+  typedEl.innerHTML = current.slice(0, charIndex);
+
+  // Color the last word in accent
+  const words = typedEl.textContent.trim().split(' ');
+  const lastWord = words.pop();
+  const rest = words.join(' ');
+  if (rest) {
+    typedEl.innerHTML = rest + ' <span style="color:var(--accent)">' + lastWord + '</span>';
+  } else {
+    typedEl.innerHTML = '<span style="color:var(--accent)">' + lastWord + '</span>';
+  }
+
+  let delay = isDeleting ? 60 : 110;
+
+  if (!isDeleting && charIndex === current.length) {
+    delay = 1800;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    delay = 400;
+  }
+
+  setTimeout(type, delay);
+}
+
+type();
+
 // ── Active nav link + side nav on scroll ──
 const sections = document.querySelectorAll('section');
 const navLinkItems = document.querySelectorAll('.nav-links a');
