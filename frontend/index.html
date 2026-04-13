@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nguyễn Tuấn Kiệt — Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Nguyễn Tuấn Kiệt</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Software Developer</p>
+      <h1>Hi, I'm <span class="accent">Nguyễn Tuấn Kiệt</span></h1>
+      <p class="tagline">I'm currently a junior student at Ho Chi Minh City International University</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">See My Work</a>
+        <a href="#contact" class="btn-outline">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header fade-in">
+      <span class="section-label">About Me</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>Write a short paragraph about yourself here — your background, what you enjoy building, and what drives you as a developer.</p>
+        <p>You can mention where you're based, what kind of projects excite you, or what you're currently learning.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card fade-in">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Projects Built</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <span class="section-label">Projects</span>
+  </div>
+  <div class="projects-grid">
+
+    <div class="card fade-in">
+      <div class="card-img">
+        <img src="assets/images/projects/mangahub.png" alt="MangaHub" />
+      </div>
+      <div class="card-body">
+        <h3>MangaHub</h3>
+        <p>A platform to browse and read manga online. (Add a bit more detail about what it does!)</p>
+        <div class="tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <div class="card-links">
+          <a href="#" class="card-link" target="_blank">Live Demo →</a>
+          <a href="#" class="card-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img">
+        <img src="assets/images/projects/portfolio.png" alt="Portfolio Website" />
+      </div>
+      <div class="card-body">
+        <h3>Personal Portfolio</h3>
+        <p>This portfolio website — designed and built from scratch to showcase my work and skills.</p>
+        <div class="tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <div class="card-links">
+          <a href="#" class="card-link" target="_blank">Live Demo →</a>
+          <a href="#" class="card-link" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header fade-in">
+      <span class="section-label">Skills</span>
+    </div>
+    <div class="skills-grid">
+  <div class="skill-group fade-in">
+    <h4>Languages</h4>
+    <ul>
+      <li>HTML & CSS</li>
+      <li>JavaScript</li>
+      <li>Java</li>
+      <li>Go</li>
+      <li>C / C++</li>
+    </ul>
+  </div>
+  <div class="skill-group fade-in">
+  <h4>Tools & Technologies</h4>
+  <ul>
+    <li>Linux</li>
+    <li>Docker</li>
+    <li>Git & GitHub</li>
+    <li>MySQL</li>
+    <li>SQLite</li>
+  </ul>
+</div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header fade-in">
+      <span class="section-label">Contact</span>
+    </div>
+    <p class="contact-intro fade-in">I'm open to opportunities and collaborations. Feel free to reach out!</p>
+    <form class="contact-form fade-in" id="contactForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your Name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+    <div class="contact-links fade-in">
+      <a href="mailto:nguyentuankietiu@gmail.com">nguyentuankietiu@gmail.com</a>
+      <a href="https://github.com/NTK0611" target="_blank">GitHub</a>
+      
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Your Name. Built with care.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
