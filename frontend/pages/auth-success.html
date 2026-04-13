@@ -10,10 +10,22 @@
     const params = new URLSearchParams(window.location.search);
     const token = params.get('token');
 
-    console.log('Token received:', token);
+    const baseURL = window.location.hostname === '127.0.0.1'
+      ? 'http://127.0.0.1:5500/frontend'
+      : 'https://portfolio-ntk.vercel.app';
+
+    const API = window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:5000/api'
+      : 'https://my-portfolio-production-830c.up.railway.app/api';
+
+    console.log('Token received:', token ? 'YES' : 'NO');
+    console.log('API URL:', API);
 
     if (token) {
-      fetch('https://my-portfolio-production-830c.up.railway.app/api/auth/me', {
+      localStorage.setItem('token', token);
+      console.log('Fetching user info...');
+
+      fetch(`${API}/auth/me`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => {
@@ -21,18 +33,17 @@
         return res.json();
       })
       .then(user => {
-        console.log('User:', user);
-        localStorage.setItem('token', token);
+        console.log('User data:', user);
         localStorage.setItem('user', JSON.stringify(user));
-        window.location.href = '../index.html';
+        window.location.replace(`${baseURL}/index.html`);
       })
       .catch(err => {
-        console.error('Error:', err);
-        window.location.href = 'login.html';
+        console.error('Fetch error:', err.message);
+        window.location.replace(`${baseURL}/pages/login.html`);
       });
     } else {
-      console.error('No token in URL!');
-      window.location.href = 'login.html';
+      console.error('No token!');
+      window.location.replace(`${baseURL}/pages/login.html`);
     }
   </script>
 </body>
