@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- TOP NAV -->
   <nav>
     <div class="logo">Nguyễn Tuấn Kiệt</div>
     <ul class="nav-links">
@@ -16,20 +16,33 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li class="login-link"><a href="pages/login.html" class="btn-primary" style="padding: 0.4rem 1rem; color: #ffffff;">Login</a></li>
+      <li class="login-link"><a href="pages/login.html" class="btn-login">Login</a></li>
     </ul>
     <button class="hamburger" id="hamburger">&#9776;</button>
   </nav>
 
+  <!-- RIGHT SIDE NAV -->
+  <div class="side-nav">
+    <a href="#hero" class="side-nav-item active" title="Home">🏠</a>
+    <a href="#about" class="side-nav-item" title="About">👤</a>
+    <a href="#projects" class="side-nav-item" title="Projects">💼</a>
+    <a href="#contact" class="side-nav-item" title="Contact">✉️</a>
+  </div>
+
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Intern Backend Developer</p>
+    <div class="hero-left-panel">
+      <div class="hero-photo-wrap">
+        <img src="assets/images/avatar.jpg" alt="Nguyễn Tuấn Kiệt" class="hero-photo" />
+      </div>
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow"><span class="dash">—</span> Intern Backend Developer</p>
       <h1>Hi, Welcome to my <span class="accent">Portfolio</span></h1>
-      <p class="tagline">Hi, you can call me Kiệt . I'm Passionate about backend development and cloud infrastructure. I'm currently seeking for internship opportunities.</p>
+      <p class="tagline">Hi, you can call me Kiệt. Passionate about backend development and cloud infrastructure. Currently seeking internship opportunities.</p>
       <div class="hero-cta">
-        <a href="#projects" class="btn-primary">See My Work</a>
-        <a href="#contact" class="btn-outline">Contact Me</a>
+        <a href="#projects" class="btn-primary">→ SEE MY WORK</a>
+        <a href="#contact" class="btn-outline">→ CONTACT ME</a>
       </div>
     </div>
   </section>
@@ -37,45 +50,47 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="section-header fade-in">
-      <span class="section-label">About Me</span>
+      <span class="section-label">About <span class="accent">Me</span></span>
     </div>
-    <div class="about-grid">
 
-      <!-- LEFT: Photo -->
-      <div class="about-img-wrapper fade-in">
-       <div class="about-img">
-        <img src="assets/images/avatar.jpg" alt="Nguyễn Tuấn Kiệt" />
-       </div>
-        <a href="https://github.com/NTK0611" target="_blank" class="github-link">
-    GitHub →
-        </a>
-      </div>
-      <!-- RIGHT: Text + Stats -->
-      <div class="about-right">
-        <div class="about-text fade-in">
-           <p>I'm Nguyễn Tuấn Kiệt, a junior student at Ho Chi Minh City International University with a passion for building reliable and scalable backend systems.</p>
-           <p>My goal is to become a <span class="accent">Backend Engineer</span> — writing clean code, designing efficient APIs, and working with databases to power great applications.</p>
-           <p>I enjoy working with Node.js, MySQL, Docker, and Linux. When I'm not studying, I'm building side projects and sharpening my skills one commit at a time.</p>
+    <div class="about-personal fade-in">
+      <h3 class="about-personal-title">Personal Information</h3>
+      <div class="about-personal-grid">
+        <div class="about-info-col">
+          <div class="about-info-row"><span class="info-label">First Name:</span> <span class="info-value">Nguyễn Tuấn</span></div>
+          <div class="about-info-row"><span class="info-label">Last Name:</span> <span class="info-value">Kiệt</span></div>
+          <div class="about-info-row"><span class="info-label">Birthday:</span> <span class="info-value">06/12/2005</span></div>
+          <div class="about-info-row"><span class="info-label">Sex:</span> <span class="info-value">Male</span></div>
+          <div class="about-info-row"><span class="info-label">Language:</span> <span class="info-value">Vietnamese, English</span></div>
         </div>
-        <div class="about-stats">
-        <div class="stat-card fade-in">
-         <div class="stat-number">2</div>
-         <div class="stat-label">Projects Built</div>
-         </div>
-        <div class="stat-card fade-in">
-         <div class="stat-number">🎓</div>
-         <div class="stat-label">Seeking Internship</div>
-         </div>
+        <div class="about-info-col">
+          <div class="about-info-row"><span class="info-label">University:</span> <span class="info-value">IU — HCMC</span></div>
+          <div class="about-info-row"><span class="info-label">Address:</span> <span class="info-value">Trấn Biên, Đồng Nai</span></div>
+          <div class="about-info-row"><span class="info-label">Phone:</span> <span class="info-value">0849 454 696</span></div>
+          <div class="about-info-row"><span class="info-label">GitHub:</span> <a href="https://github.com/NTK0611" target="_blank" class="info-link">github.com/NTK0611</a></div>
+          <div class="about-info-row"><span class="info-label">Email:</span> <a href="mailto:nguyentuankietiu@gmail.com" class="info-link">nguyentuankietiu@gmail.com</a></div>
+        </div>
+        <div class="about-stats-col">
+          <div class="about-stat-box fade-in">
+            <div class="about-stat-num">2<sup>+</sup></div>
+            <div class="about-stat-sep"></div>
+            <div class="about-stat-label">Personal Projects</div>
+          </div>
+          <div class="about-stat-box fade-in">
+            <div class="about-stat-num">0<sup>+</sup></div>
+            <div class="about-stat-sep"></div>
+            <div class="about-stat-label">Years of Experience</div>
+          </div>
         </div>
       </div>
-
+      <a href="assets/cv/your-cv.pdf" download class="btn-primary about-cv-btn">→ DOWNLOAD CV</a>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-header fade-in">
-      <span class="section-label">Projects</span>
+      <span class="section-label">My <span class="accent">Projects</span></span>
     </div>
     <div class="projects-grid">
 
@@ -119,30 +134,87 @@
 
   <!-- SKILLS -->
   <section id="skills">
-    <div class="section-header fade-in">
-      <span class="section-label">Skills</span>
+    <div class="section-header fade-in" style="text-align: center;">
+      <span class="section-label">My <span class="accent">Skills</span></span>
     </div>
-    <div class="skills-grid">
-      <div class="skill-group fade-in">
-        <h4>Languages</h4>
-        <ul>
-          <li>HTML & CSS</li>
-          <li>JavaScript</li>
-          <li>Java</li>
-          <li>Go</li>
-          <li>C / C++</li>
-        </ul>
+
+    <div class="skills-badges fade-in">
+      <div class="skills-row">
+        <div class="skills-row-label">Languages</div>
+        <div class="skills-row-items">
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+            </div>
+            <span>HTML/CSS</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            </div>
+            <span>JavaScript</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+            </div>
+            <span>Java</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Go" />
+            </div>
+            <span>Go</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+            </div>
+            <span>C / C++</span>
+          </div>
+        </div>
       </div>
-      <div class="skill-group fade-in">
-        <h4>Tools & Technologies</h4>
-        <ul>
-          <li>Node.js</li>
-          <li>Linux</li>
-          <li>Docker</li>
-          <li>Git & GitHub</li>
-          <li>MySQL</li>
-          <li>SQLite</li>
-        </ul>
+
+      <div class="skills-row">
+        <div class="skills-row-label">Tools & Technologies</div>
+        <div class="skills-row-items">
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
+            </div>
+            <span>Node.js</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+            </div>
+            <span>Linux</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
+            </div>
+            <span>Docker</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+            </div>
+            <span>Git</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+            </div>
+            <span>MySQL</span>
+          </div>
+          <div class="skill-badge">
+            <div class="skill-circle">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite" />
+            </div>
+            <span>SQLite</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -150,7 +222,7 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="section-header fade-in">
-      <span class="section-label">Contact</span>
+      <span class="section-label">Get In <span class="accent">Touch</span></span>
     </div>
     <p class="contact-intro fade-in">I'm open to opportunities and collaborations. Feel free to reach out!</p>
     <form class="contact-form fade-in" id="contactForm">
@@ -169,8 +241,7 @@
       <button type="submit" class="btn-primary">Send Message</button>
     </form>
     <div class="contact-links fade-in">
-      
-      <a href="https://github.com/NTK0611" target="_blank">GitHub</a>
+      <a href="https://github.com/NTK0611" target="_blank">GitHub →</a>
     </div>
   </section>
 

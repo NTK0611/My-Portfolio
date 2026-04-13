@@ -1,6 +1,7 @@
-// ── Active nav link on scroll ──
+// ── Active nav link + side nav on scroll ──
 const sections = document.querySelectorAll('section');
 const navLinkItems = document.querySelectorAll('.nav-links a');
+const sideNavItems = document.querySelectorAll('.side-nav-item');
 
 window.addEventListener('scroll', () => {
   let current = '';
@@ -9,10 +10,20 @@ window.addEventListener('scroll', () => {
       current = section.getAttribute('id');
     }
   });
+
+  // Update top nav active link
   navLinkItems.forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href') === `#${current}`) {
       link.classList.add('active');
+    }
+  });
+
+  // Update side nav active item
+  sideNavItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === `#${current}`) {
+      item.classList.add('active');
     }
   });
 });
