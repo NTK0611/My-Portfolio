@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://my-portfolio-production-830c.up.railway.app/api';
 
 const showError = (msg) => {
   const el = document.getElementById('errorMsg');

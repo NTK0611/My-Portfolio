@@ -13,7 +13,7 @@
     console.log('Token received:', token);
 
     if (token) {
-      fetch('http://localhost:5000/api/auth/me', {
+      fetch('https://my-portfolio-production-830c.up.railway.app/api/auth/me', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => {
