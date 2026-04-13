@@ -14,10 +14,19 @@ router.get('/me', protect, getMe);
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login', session: false }),
-  (req, res) => {
-    const token = req.user.token;
-    res.redirect(`${process.env.FRONTEND_URL}/auth-success?token=${token}`);
+  (req, res, next) => {
+    passport.authenticate('google', { session: false }, (err, user, info) => {
+      if (err) {
+        console.error('Auth error:', err);
+        return res.redirect('http://127.0.0.1:5500/frontend/pages/login.html');
+      }
+      if (!user) {
+        console.error('No user returned:', info);
+        return res.redirect('http://127.0.0.1:5500/frontend/pages/login.html');
+      }
+      console.log('Success! Redirecting with token for:', user.email);
+      return res.redirect(`${process.env.FRONTEND_URL}?token=${user.token}`);
+    })(req, res, next);
   }
 );
 

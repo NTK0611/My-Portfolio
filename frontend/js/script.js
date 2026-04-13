@@ -1,6 +1,6 @@
 // ── Active nav link on scroll ──
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-links a');
+const navLinkItems = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
   let current = '';
@@ -9,7 +9,7 @@ window.addEventListener('scroll', () => {
       current = section.getAttribute('id');
     }
   });
-  navLinks.forEach(link => {
+  navLinkItems.forEach(link => {
     link.classList.remove('active');
     if (link.getAttribute('href') === `#${current}`) {
       link.classList.add('active');
@@ -25,8 +25,7 @@ hamburger.addEventListener('click', () => {
   navMenu.classList.toggle('open');
 });
 
-// Close menu when a link is clicked
-navLinks.forEach(link => {
+navLinkItems.forEach(link => {
   link.addEventListener('click', () => navMenu.classList.remove('open'));
 });
 
@@ -60,3 +59,31 @@ contactForm.addEventListener('submit', (e) => {
     contactForm.reset();
   }, 3000);
 });
+
+// ── Auth state in nav ──
+const token = localStorage.getItem('token');
+const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+if (token && user) {
+  const loginLi = document.querySelector('.nav-links .login-link');
+  if (loginLi) loginLi.remove();
+
+  if (user.role === 'admin') {
+    navMenu.insertAdjacentHTML('beforeend', `
+      <li><a href="pages/dashboard.html" style="color: var(--accent); font-weight:500;">Dashboard</a></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    `);
+  } else {
+    navMenu.insertAdjacentHTML('beforeend', `
+      <li><span style="color: var(--ink-mid); font-size:0.875rem;">Hi, ${user.name.split(' ')[0]}</span></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    `);
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.reload();
+  });
+}

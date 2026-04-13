@@ -16,6 +16,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li class="login-link"><a href="pages/login.html" class="btn-primary" style="padding: 0.4rem 1rem;">Login</a></li>
     </ul>
     <button class="hamburger" id="hamburger">&#9776;</button>
   </nav>
@@ -39,11 +40,11 @@
       <span class="section-label">About Me</span>
     </div>
     <div class="about-grid">
-     <div class="about-text fade-in">
-    <p>I'm Nguyễn Tuấn Kiệt, a junior student at Ho Chi Minh City International University with a passion for building and shipping software.</p>
-    <p>My goal is to become a <span class="accent">DevOps Engineer</span> — bridging the gap between development and operations to help teams deliver faster and more reliably.</p>
-    <p>I enjoy working with Linux, Docker, and exploring cloud infrastructure. When I'm not studying, I'm building side projects and sharpening my skills one commit at a time.</p>
-    </div>
+      <div class="about-text fade-in">
+        <p>I'm Nguyễn Tuấn Kiệt, a junior student at Ho Chi Minh City International University with a passion for building and shipping software.</p>
+        <p>My goal is to become a <span class="accent">DevOps Engineer</span> — bridging the gap between development and operations to help teams deliver faster and more reliably.</p>
+        <p>I enjoy working with Linux, Docker, and exploring cloud infrastructure. When I'm not studying, I'm building side projects and sharpening my skills one commit at a time.</p>
+      </div>
       <div class="about-stats">
         <div class="stat-card fade-in">
           <div class="stat-number">2+</div>
@@ -66,48 +67,49 @@
   </section>
 
   <!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header fade-in">
-    <span class="section-label">Projects</span>
-  </div>
-  <div class="projects-grid">
-
-    <div class="card fade-in">
-      <div class="card-img">
-        <img src="assets/images/projects/mangahub.png" alt="MangaHub" />
-      </div>
-      <div class="card-body">
-        <h3>MangaHub</h3>
-        <p>A platform to browse and read manga online. (Add a bit more detail about what it does!)</p>
-        <div class="tags">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
-        </div>
-        <div class="card-links">
-          <a href="#" class="card-link" target="_blank">Live Demo →</a>
-          <a href="#" class="card-link" target="_blank">GitHub →</a>
-        </div>
-      </div>
+  <section id="projects">
+    <div class="section-header fade-in">
+      <span class="section-label">Projects</span>
     </div>
+    <div class="projects-grid">
 
-    <div class="card fade-in">
-      <div class="card-img">
-        <img src="assets/images/projects/portfolio.png" alt="Portfolio Website" />
-      </div>
-      <div class="card-body">
-        <h3>Personal Portfolio</h3>
-        <p>This portfolio website — designed and built from scratch to showcase my work and skills.</p>
-        <div class="tags">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+      <div class="card fade-in">
+        <div class="card-img">
+          <img src="assets/images/projects/mangahub.png" alt="MangaHub" />
         </div>
-        <div class="card-links">
-          <a href="#" class="card-link" target="_blank">Live Demo →</a>
-          <a href="#" class="card-link" target="_blank">GitHub →</a>
+        <div class="card-body">
+          <h3>MangaHub</h3>
+          <p>A platform to browse and read manga online.</p>
+          <div class="tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <div class="card-links">
+            <a href="#" class="card-link" target="_blank">Live Demo →</a>
+            <a href="#" class="card-link" target="_blank">GitHub →</a>
+          </div>
         </div>
       </div>
+
+      <div class="card fade-in">
+        <div class="card-img">
+          <img src="assets/images/projects/portfolio.png" alt="Portfolio Website" />
+        </div>
+        <div class="card-body">
+          <h3>Personal Portfolio</h3>
+          <p>This portfolio website — designed and built from scratch to showcase my work and skills.</p>
+          <div class="tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            <span>Node.js</span><span>MySQL</span>
+          </div>
+          <div class="card-links">
+            <a href="#" class="card-link" target="_blank">Live Demo →</a>
+            <a href="https://github.com/NTK0611/My-Portfolio" class="card-link" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- SKILLS -->
   <section id="skills">
@@ -115,26 +117,27 @@
       <span class="section-label">Skills</span>
     </div>
     <div class="skills-grid">
-  <div class="skill-group fade-in">
-    <h4>Languages</h4>
-    <ul>
-      <li>HTML & CSS</li>
-      <li>JavaScript</li>
-      <li>Java</li>
-      <li>Go</li>
-      <li>C / C++</li>
-    </ul>
-  </div>
-  <div class="skill-group fade-in">
-  <h4>Tools & Technologies</h4>
-  <ul>
-    <li>Linux</li>
-    <li>Docker</li>
-    <li>Git & GitHub</li>
-    <li>MySQL</li>
-    <li>SQLite</li>
-  </ul>
-</div>
+      <div class="skill-group fade-in">
+        <h4>Languages</h4>
+        <ul>
+          <li>HTML & CSS</li>
+          <li>JavaScript</li>
+          <li>Java</li>
+          <li>Go</li>
+          <li>C / C++</li>
+        </ul>
+      </div>
+      <div class="skill-group fade-in">
+        <h4>Tools & Technologies</h4>
+        <ul>
+          <li>Linux</li>
+          <li>Docker</li>
+          <li>Git & GitHub</li>
+          <li>MySQL</li>
+          <li>SQLite</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACT -->
@@ -161,12 +164,11 @@
     <div class="contact-links fade-in">
       <a href="mailto:nguyentuankietiu@gmail.com">nguyentuankietiu@gmail.com</a>
       <a href="https://github.com/NTK0611" target="_blank">GitHub</a>
-      
     </div>
   </section>
 
   <footer>
-    <p>© 2026 Your Name. Built with care.</p>
+    <p>© 2026 Nguyễn Tuấn Kiệt. Built with care.</p>
   </footer>
 
   <script src="js/script.js"></script>
