@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — Overview</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <a href="dashboard.html" class="topbar-logo">NTK Admin</a>
+    <div class="topbar-right">
+      <span class="topbar-user">Signed in as <span id="adminName">Admin</span></span>
+      <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-link active">
+        <span class="icon">📊</span> Overview
+      </a>
+      <a href="dashboard-messages.html" class="sidebar-link">
+        <span class="icon">✉️</span> Messages
+      </a>
+      <a href="dashboard-users.html" class="sidebar-link">
+        <span class="icon">👥</span> Users
+      </a>
+      <a href="dashboard-edit.html" class="sidebar-link">
+        <span class="icon">✏️</span> Edit Portfolio
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html">← View Portfolio</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Overview <span>Dashboard</span></h1>
+      <p>Welcome back! Here's what's happening with your portfolio.</p>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-icon">👥</div>
+        <div class="stat-card-label">Total Users</div>
+        <div class="stat-card-value" id="totalUsers">—</div>
+        <div class="stat-card-sub">Registered accounts</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">✉️</div>
+        <div class="stat-card-label">Total Messages</div>
+        <div class="stat-card-value" id="totalMessages">—</div>
+        <div class="stat-card-sub">Contact form submissions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">💼</div>
+        <div class="stat-card-label">Total Projects</div>
+        <div class="stat-card-value">2</div>
+        <div class="stat-card-sub">Portfolio projects</div>
+      </div>
+      <div class="admin-card">
+        <div class="stat-card-label">Admin Info</div>
+        <div class="admin-name" id="adminCardName">—</div>
+        <div class="admin-email" id="adminCardEmail">—</div>
+        <span class="admin-badge">Admin</span>
+      </div>
+    </div>
+
+    <!-- RECENT MESSAGES -->
+    <div class="table-section">
+      <div class="table-section-header">
+        <h2>Recent Messages</h2>
+        <a href="dashboard-messages.html">View All →</a>
+      </div>
+      <div id="messagesTableWrap">
+        <div class="loading">Loading messages...</div>
+      </div>
+    </div>
+
+    <!-- RECENT USERS -->
+    <div class="table-section">
+      <div class="table-section-header">
+        <h2>Recent Users</h2>
+        <a href="dashboard-users.html">View All →</a>
+      </div>
+      <div id="usersTableWrap">
+        <div class="loading">Loading users...</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

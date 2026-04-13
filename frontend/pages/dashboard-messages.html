@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — Messages</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <a href="dashboard.html" class="topbar-logo">NTK Admin</a>
+    <div class="topbar-right">
+      <span class="topbar-user">Signed in as <span id="adminName">Admin</span></span>
+      <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-link">
+        <span class="icon">📊</span> Overview
+      </a>
+      <a href="dashboard-messages.html" class="sidebar-link active">
+        <span class="icon">✉️</span> Messages
+      </a>
+      <a href="dashboard-users.html" class="sidebar-link">
+        <span class="icon">👥</span> Users
+      </a>
+      <a href="dashboard-edit.html" class="sidebar-link">
+        <span class="icon">✏️</span> Edit Portfolio
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html">← View Portfolio</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1>All <span>Messages</span></h1>
+      <p>All contact form submissions from your portfolio.</p>
+    </div>
+
+    <div class="table-section">
+      <div class="table-section-header">
+        <h2>Messages <span id="messageCount" style="color:var(--ink-light); font-weight:400; font-size:0.85rem;"></span></h2>
+      </div>
+      <div id="messagesTableWrap">
+        <div class="loading">Loading messages...</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const API = 'https://my-portfolio-production-830c.up.railway.app';
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+    if (!token || !user || user.role !== 'admin') {
+      window.location.href = '/frontend/pages/login.html';
+    }
+
+    if (user) {
+      document.getElementById('adminName').textContent = user.name || 'Admin';
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/frontend/pages/login.html';
+    });
+
+    function formatDate(str) {
+      if (!str) return '—';
+      return new Date(str).toLocaleDateString('en-GB', {
+        day: '2-digit', month: 'short', year: 'numeric'
+      });
+    }
+
+    async function loadMessages() {
+      const wrap = document.getElementById('messagesTableWrap');
+      try {
+        const res = await fetch(`${API}/api/admin/messages`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const messages = Array.isArray(data) ? data : (data.messages || []);
+
+        document.getElementById('messageCount').textContent = `(${messages.length})`;
+
+        if (messages.length === 0) {
+          wrap.innerHTML = '<div class="empty-state">No messages yet.</div>';
+          return;
+        }
+
+        wrap.innerHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${messages.map((m, i) => `
+                <tr>
+                  <td style="color:var(--ink-light)">${i + 1}</td>
+                  <td style="font-weight:600; color:var(--ink)">${m.name || '—'}</td>
+                  <td>${m.email || '—'}</td>
+                  <td style="max-width:320px">${m.message || '—'}</td>
+                  <td>${formatDate(m.createdAt)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      } catch (err) {
+        wrap.innerHTML = `<div class="error-msg">Failed to load messages. ${err.message}</div>`;
+      }
+    }
+
+    loadMessages();
+  </script>
+</body>
+</html>

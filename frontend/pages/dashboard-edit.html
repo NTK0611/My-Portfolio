@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — Edit Portfolio</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <a href="dashboard.html" class="topbar-logo">NTK Admin</a>
+    <div class="topbar-right">
+      <span class="topbar-user">Signed in as <span id="adminName">Admin</span></span>
+      <a href="#" class="btn-logout" id="logoutBtn">Logout</a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-link">
+        <span class="icon">📊</span> Overview
+      </a>
+      <a href="dashboard-messages.html" class="sidebar-link">
+        <span class="icon">✉️</span> Messages
+      </a>
+      <a href="dashboard-users.html" class="sidebar-link">
+        <span class="icon">👥</span> Users
+      </a>
+      <a href="dashboard-edit.html" class="sidebar-link active">
+        <span class="icon">✏️</span> Edit Portfolio
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="../index.html">← View Portfolio</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Edit <span>Portfolio</span></h1>
+      <p>Edit your bio, projects, and skills directly from the browser.</p>
+    </div>
+
+    <div class="table-section" style="padding: 3rem; text-align: center;">
+      <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚧</div>
+      <h2 style="font-size: 1.1rem; color: var(--ink); margin-bottom: 0.5rem;">Coming Soon</h2>
+      <p style="font-size: 0.875rem; color: var(--ink-light);">This section is under construction. Check back soon!</p>
+    </div>
+  </main>
+
+  <script>
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+    if (!token || !user || user.role !== 'admin') {
+      window.location.href = '/frontend/pages/login.html';
+    }
+
+    if (user) {
+      document.getElementById('adminName').textContent = user.name || 'Admin';
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/frontend/pages/login.html';
+    });
+  </script>
+</body>
+</html>
