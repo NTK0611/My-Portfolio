@@ -53,7 +53,10 @@ nav {
   cursor: pointer;
   color: var(--ink);
 }
-
+.nav-links .btn-primary {
+  color: #ffffff !important;
+  font-size: 0.875rem;
+}
 /* ── SECTIONS ── */
 section {
   max-width: var(--max-w);
