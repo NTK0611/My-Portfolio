@@ -12,10 +12,13 @@ router.post('/contact', async (req, res) => {
   }
 
   try {
-    // 1. Save to DB
+    // 1. Save to DB first
     await Message.create({ name, email, message });
 
-    // 2. Send email notification
+    // 2. Respond immediately — don't wait for email
+    res.json({ success: true, message: 'Message sent successfully!' });
+
+    // 3. Send email in background (non-blocking)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -24,7 +27,7 @@ router.post('/contact', async (req, res) => {
       },
     });
 
-    await transporter.sendMail({
+    transporter.sendMail({
       from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_USER,
       subject: `New message from ${name}`,
@@ -35,9 +38,7 @@ router.post('/contact', async (req, res) => {
         <p><strong>Message:</strong></p>
         <p style="background:#f9f9f9; padding:12px; border-left:4px solid #D97706;">${message}</p>
       `,
-    });
-
-    res.json({ success: true, message: 'Message sent successfully!' });
+    }).catch(err => console.error('Email send error:', err));
   } catch (err) {
     console.error('Contact form error:', err);
     res.status(500).json({ message: 'Failed to send message. Please try again.' });
