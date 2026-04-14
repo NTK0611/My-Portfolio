@@ -6,10 +6,14 @@ require('dotenv').config();
 
 const { connectDB } = require('./config/db');
 const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin');
+
+// Import models so Sequelize knows about them for sync
+require('./models/User');
+require('./models/Message');
 
 const app = express();
 
-// Middleware
 // Middleware
 app.use(cors({
   origin: [
@@ -31,6 +35,7 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Health check
 app.get('/', (req, res) => res.json({ message: 'Portfolio API running' }));
