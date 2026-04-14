@@ -97,21 +97,55 @@ const observer = new IntersectionObserver((entries) => {
 
 faders.forEach(el => observer.observe(el));
 
-// ── Contact form (frontend only for now) ──
+// ── Contact form ──
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const btn = contactForm.querySelector('button[type="submit"]');
-  btn.textContent = 'Message Sent!';
-  btn.style.background = 'var(--accent)';
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  btn.textContent = 'Sending...';
   btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Send Message';
-    btn.style.background = '';
-    btn.disabled = false;
-    contactForm.reset();
-  }, 3000);
+
+  try {
+    const res = await fetch('https://my-portfolio-production-830c.up.railway.app/api/email/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      btn.textContent = 'Message Sent!';
+      btn.style.background = '#16a34a';
+      contactForm.reset();
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    } else {
+      btn.textContent = data.message || 'Failed. Try again.';
+      btn.style.background = '#dc2626';
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    }
+  } catch (err) {
+    btn.textContent = 'Network error. Try again.';
+    btn.style.background = '#dc2626';
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 3000);
+  }
 });
 
 // ── Auth state in nav ──
