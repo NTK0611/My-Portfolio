@@ -7,6 +7,7 @@ require('dotenv').config();
 const { connectDB } = require('./config/db');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
+const emailRoutes = require('./routes/email');
 
 // Import models so Sequelize knows about them for sync
 require('./models/User');
@@ -16,11 +17,10 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: [
-    'http://127.0.0.1:5500',
-    'http://localhost:5500',
-    'https://portfolio-ntk.vercel.app'
-  ],
+  origin: function(origin, callback) {
+    // Allow all origins during development
+    callback(null, true);
+  },
   credentials: true
 }));
 app.use(express.json());
@@ -36,6 +36,7 @@ app.use(passport.session());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/email', emailRoutes);
 
 // Health check
 app.get('/', (req, res) => res.json({ message: 'Portfolio API running' }));
