@@ -8,10 +8,14 @@ const { connectDB } = require('./config/db');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 const emailRoutes = require('./routes/email');
+const portfolioRoutes = require('./routes/portfolio');
 
 // Import models so Sequelize knows about them for sync
 require('./models/User');
 require('./models/Message');
+require('./models/Portfolio');
+require('./models/Project');
+require('./models/Skill');
 
 const app = express();
 
@@ -19,16 +23,17 @@ const app = express();
 app.use(cors({
   origin: function(origin, callback) {
     const allowed = [
-      'http://127.0.0.1:5500',
-      'http://localhost:5500',
-      'https://portfolio-ntk.vercel.app',
-    ];
-    // Allow requests with no origin (mobile apps, curl, etc)
+     'http://127.0.0.1:5500',
+     'http://localhost:5500',
+     'https://portfolio-ntk.vercel.app',
+     'https://portfolio-ntk.id.vn',        
+     'https://www.portfolio-ntk.id.vn',    
+     ];
     if (!origin) return callback(null, true);
     if (allowed.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(null, true); // Allow all for now during development
+      callback(null, true);
     }
   },
   credentials: true
@@ -47,6 +52,7 @@ app.use(passport.session());
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/email', emailRoutes);
+app.use('/api/portfolio', portfolioRoutes);
 
 // Health check
 app.get('/', (req, res) => res.json({ message: 'Portfolio API running' }));
