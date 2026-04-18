@@ -8,60 +8,65 @@ const Skill = require('../models/Skill');
 
 // ── Seed defaults on first run ──
 async function seedDefaults() {
-  const count = await Portfolio.count();
-  if (count === 0) {
-    await Portfolio.create({
-      heroName: 'Nguyễn Tuấn Kiệt',
-      heroTagline: 'Nice to meet you! My name is Kiệt and I am passionate about backend systems and cloud infrastructure. I am currently a junior student at Ho Chi Minh City International University and actively seeking internship opportunities. I look forward to meeting you!',
-      bioText: 'Junior student at Ho Chi Minh City International University with a passion for building reliable backend systems.',
-      email: 'nguyentuankietiu@gmail.com',
-      github: 'https://github.com/NTK0611',
-    });
-  }
+  try {
+    const count = await Portfolio.count();
+    if (count === 0) {
+      await Portfolio.create({
+        heroName: 'Nguyễn Tuấn Kiệt',
+        heroTagline: 'Nice to meet you! My name is Kiệt and I am passionate about backend systems and cloud infrastructure. I am currently a junior student at Ho Chi Minh City International University and actively seeking internship opportunities. I look forward to meeting you!',
+        bioText: 'Junior student at Ho Chi Minh City International University with a passion for building reliable backend systems.',
+        email: 'nguyentuankietiu@gmail.com',
+        github: 'https://github.com/NTK0611',
+      });
+    }
 
-  const projectCount = await Project.count();
-  if (projectCount === 0) {
-    await Project.bulkCreate([
-      {
-        title: 'MangaHub',
-        description: 'A platform to browse and read manga online.',
-        tags: 'HTML,CSS,JavaScript',
-        liveUrl: '#',
-        githubUrl: '#',
-        imageUrl: 'assets/images/projects/mangahub.png',
-        order: 1,
-      },
-      {
-        title: 'Personal Portfolio',
-        description: 'This portfolio website — designed and built from scratch to showcase my work and skills.',
-        tags: 'HTML,CSS,JavaScript,Node.js,MySQL',
-        liveUrl: '#',
-        githubUrl: 'https://github.com/NTK0611/My-Portfolio',
-        imageUrl: 'assets/images/projects/portfolio.png',
-        order: 2,
-      },
-    ]);
-  }
+    const projectCount = await Project.count();
+    if (projectCount === 0) {
+      await Project.bulkCreate([
+        {
+          title: 'MangaHub',
+          description: 'A platform to browse and read manga online.',
+          tags: 'HTML,CSS,JavaScript',
+          liveUrl: '#',
+          githubUrl: '#',
+          imageUrl: 'assets/images/projects/mangahub.png',
+          order: 1,
+        },
+        {
+          title: 'Personal Portfolio',
+          description: 'This portfolio website — designed and built from scratch to showcase my work and skills.',
+          tags: 'HTML,CSS,JavaScript,Node.js,MySQL',
+          liveUrl: '#',
+          githubUrl: 'https://github.com/NTK0611/My-Portfolio',
+          imageUrl: 'assets/images/projects/portfolio.png',
+          order: 2,
+        },
+      ]);
+    }
 
-  const skillCount = await Skill.count();
-  if (skillCount === 0) {
-    await Skill.bulkCreate([
-      { name: 'HTML/CSS', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', order: 1 },
-      { name: 'JavaScript', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', order: 2 },
-      { name: 'Java', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', order: 3 },
-      { name: 'Go', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg', order: 4 },
-      { name: 'C / C++', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg', order: 5 },
-      { name: 'Node.js', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', order: 1 },
-      { name: 'Linux', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg', order: 2 },
-      { name: 'Docker', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', order: 3 },
-      { name: 'Git', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', order: 4 },
-      { name: 'MySQL', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', order: 5 },
-      { name: 'SQLite', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg', order: 6 },
-    ]);
+    const skillCount = await Skill.count();
+    if (skillCount === 0) {
+      await Skill.bulkCreate([
+        { name: 'HTML/CSS', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', order: 1 },
+        { name: 'JavaScript', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', order: 2 },
+        { name: 'Java', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', order: 3 },
+        { name: 'Go', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg', order: 4 },
+        { name: 'C / C++', category: 'language', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg', order: 5 },
+        { name: 'Node.js', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', order: 1 },
+        { name: 'Linux', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg', order: 2 },
+        { name: 'Docker', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', order: 3 },
+        { name: 'Git', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', order: 4 },
+        { name: 'MySQL', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', order: 5 },
+        { name: 'SQLite', category: 'tool', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg', order: 6 },
+      ]);
+    }
+    console.log('Seed defaults complete');
+  } catch (err) {
+    console.error('Seed error:', err.message);
   }
 }
 
-seedDefaults();
+module.exports.seedDefaults = seedDefaults;
 
 // ── PUBLIC ROUTES ──
 
@@ -173,3 +178,4 @@ router.delete('/skills/:id', protect, isAdmin, async (req, res) => {
 });
 
 module.exports = router;
+module.exports.seedDefaults = seedDefaults;

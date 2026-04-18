@@ -23,12 +23,10 @@ const app = express();
 app.use(cors({
   origin: function(origin, callback) {
     const allowed = [
-     'http://127.0.0.1:5500',
-     'http://localhost:5500',
-     'https://portfolio-ntk.vercel.app',
-     'https://portfolio-ntk.id.vn',        
-     'https://www.portfolio-ntk.id.vn',    
-     ];
+      'http://127.0.0.1:5500',
+      'http://localhost:5500',
+      'https://portfolio-ntk.vercel.app',
+    ];
     if (!origin) return callback(null, true);
     if (allowed.indexOf(origin) !== -1) {
       callback(null, true);
@@ -59,6 +57,8 @@ app.get('/', (req, res) => res.json({ message: 'Portfolio API running' }));
 
 // Start server
 const PORT = process.env.PORT || 5000;
-connectDB().then(() => {
+connectDB().then(async () => {
+  const { seedDefaults } = require('./routes/portfolio');
+  await seedDefaults();
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
